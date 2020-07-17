@@ -54,8 +54,8 @@
 }
 
 .button-change : hover{
-    -fx-border-color:  pink;
-    -fx-background-color:  pink;
+    -fx-border-color:   #ADD8E6;
+    -fx-background-color:   #ADD8E6;
     -fx-text-fill: white;
 
 
@@ -121,4 +121,7 @@
 }
 .custom-pane{
     -fx-background-color: derive(-fx-primary, 5%);
+}
+.background-photo {
+    -fx-background-image : url('\main-Page.jpg');
 }
