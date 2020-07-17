@@ -1,0 +1,124 @@
+
+* {
+    -fx-primary : #2A2E37;
+    -fx-secondary : #FFFF8D;
+    -fx-primarytext : #B2B2B2;
+    -fx-blue: #1976D2;
+    -fx-red: #FF0000;
+}
+
+.wrong-credentials
+{
+    -jfx-unfocus-color: -fx-red;
+    -jfx-focus-color: -fx-red;
+}
+.right-credentials{
+    
+    -jfx-unfocus-color: #4d4d4d;
+    -jfx-focus-color:  #00c267;
+}
+
+.button-library{
+}
+
+.pane-homescreen{
+    -fx-background-color:white;
+    -fx-background-radius: 6px;
+
+}
+.pane-homescreen:hover {
+    -fx-background-color: #377ce8; 
+    -fx-background-radius: 6px;
+}
+
+/*.button:hover{
+    -fx-background-color: #377ce8; 
+    -fx-background-radius: 6px;
+}*/
+
+.main-text
+{
+    -fx-fill: -fx-secondary;
+    -fx-font-size: 18pt;
+    -fx-text-alignment: center;
+}
+
+.tab{
+    -fx-background-color: -fx-primary;
+    -fx-pref-width : 542;
+    -fx-pref-height : 60;
+}
+
+.tab-header-background{
+    -fx-background-color: -fx-primary;
+}
+
+.button-change : hover{
+    -fx-border-color:  pink;
+    -fx-background-color:  pink;
+    -fx-text-fill: white;
+
+
+}
+
+.button-library:hover{
+    -fx-border-color:  #ADD8E6;
+    -fx-background-color:  #ADD8E6;
+    -fx-text-fill: -fx-primary;
+    -fx-border-radius: 20px;
+    -fx-background-radius: 20px;
+}
+.menu-bar{
+    -fx-base : -fx-primary;
+    -fx-background-color: -fx-primary;
+}
+
+.text-field-library{
+    -fx-prompt-text-fill: WHITE;
+
+    -fx-font-size : 13pt;
+    -jfx-focus-color: -fx-secondary;
+    -fx-text-fill: derive(-fx-secondary, 20%);
+
+}
+.text-email{
+    -fx-prompt-text-fill: black;
+    -fx-font-size : 14pt;
+    -fx-text-fill:derive(black,20%);
+}
+.context-menu
+{
+    -fx-background-color:  derive(-fx-primary, 20%);
+}
+/*Hamburger Styling*/
+.jfx-hamburger-icon{
+    -fx-spacing: 7;
+}
+
+.jfx-hamburger-icon StackPane
+{
+    -fx-background-color: -fx-secondary;
+    -fx-background-radius: 5px;
+}
+
+/*Toolbar buttons*/
+.toolbar-button
+{
+    -fx-background-color: derive(-fx-primary, 20%);
+    -fx-background-radius: 0px;
+    -fx-border-radius: 0px;
+    -fx-background-color: -fx-primary;
+}
+.toolbar-button:hover
+{
+    -fx-background-color: -fx-secondary;
+    -fx-text-fill: -fx-primary;
+}
+
+.toolbar-button:hover .glyph-icon
+{
+    -fx-fill: -fx-primary;
+}
+.custom-pane{
+    -fx-background-color: derive(-fx-primary, 5%);
+}
