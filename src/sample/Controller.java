@@ -23,7 +23,7 @@ public class Controller {
         if (passwordText.getText().isEmpty() || usernametext.getText().isEmpty()){
             JOptionPane.showMessageDialog(null , "You should sign in with your username and password");
         }
-        else if (passwordText.getText().equals("123") && usernametext.getText().equals("amr")){
+        else if (passwordText.getText().equals("123") && usernametext.getText().equals(" ")){
 
             Parent root = FXMLLoader.load(getClass().getResource("MainPage.fxml"));
             Scene tablescene = new Scene(root);
