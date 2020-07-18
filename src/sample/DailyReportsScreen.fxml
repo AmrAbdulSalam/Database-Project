@@ -9,7 +9,7 @@
 
 <AnchorPane prefHeight="500.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.DailyReportsScreen">
 
-    <AnchorPane prefHeight="501.0" prefWidth="219.0" style="-fx-background-color: gray;">
+    <AnchorPane prefHeight="501.0" prefWidth="219.0" style="-fx-background-color:  #ADD8E6;">
         <children>
             <AnchorPane layoutX="14.0" layoutY="28.0" prefHeight="40.0" prefWidth="66.0">
                 <children>

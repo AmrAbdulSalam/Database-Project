@@ -54,8 +54,8 @@
 }
 
 .button-change : hover{
-    -fx-border-color:   #ADD8E6;
-    -fx-background-color:   #ADD8E6;
+    -fx-border-color:   gray;
+    -fx-background-color:   gray;
     -fx-text-fill: white;
 
 
