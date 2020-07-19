@@ -32,12 +32,22 @@ public class CustomerScreen {
     @FXML
     private TextField bank_street , bank_city , bank_department , bank_first , bank_mid , bank_last , bank_id;
 
-    private Color col1;
-    private Container container;
-    public CustomerScreen(){
-        personname = new TextField();
-        bankname = new TextField();
+
+    private void setBankVisable(){
+        bankname.setDisable(true);
+        bank_city.setDisable(true);
+        bank_department.setDisable(true);
+        bank_street.setDisable(true);
+        bank_first.setDisable(true);
+        bank_mid.setDisable(true);
+        bank_last.setDisable(true);
+        bank_id.setDisable(true);
     }
+
+    public CustomerScreen(){
+
+    }
+
 
     public void checkFields(MouseEvent mouseEvent) throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("sample.fxml"));
@@ -68,10 +78,41 @@ public class CustomerScreen {
     }
 
     public void BankButton(ActionEvent actionEvent) {
+
+        id_perosnal.setDisable(true);
+        phone_personal.setDisable(true);
+        midname_personal.setDisable(true);
+        lastname_personal.setDisable(true);
+        street_personal.setDisable(true);
+        department_personal.setDisable(true);
+        city_personal.setDisable(true);
+        personname.setDisable(true);
+
+        bankname.setDisable(false);
+        bank_city.setDisable(false);
+        bank_department.setDisable(false);
+        bank_street.setDisable(false);
+        bank_first.setDisable(false);
+        bank_mid.setDisable(false);
+        bank_last.setDisable(false);
+        bank_id.setDisable(false);
         bankname.requestFocus();
+
     }
 
     public void personalButton(ActionEvent actionEvent) {
+
+
+        setBankVisable();
+
+        id_perosnal.setDisable(false);
+        phone_personal.setDisable(false);
+        midname_personal.setDisable(false);
+        lastname_personal.setDisable(false);
+        street_personal.setDisable(false);
+        department_personal.setDisable(false);
+        city_personal.setDisable(false);
+        personname.setDisable(false);
         personname.requestFocus();
     }
 
