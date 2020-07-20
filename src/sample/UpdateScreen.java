@@ -1,9 +1,12 @@
 package sample;
 
+import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.ComboBox;
+import javafx.scene.control.TableView;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
@@ -37,5 +40,17 @@ public class UpdateScreen {
         Stage window = (Stage)((Node) mouseEvent.getSource()).getScene().getWindow();
         window.setScene(tablescene);
         window.show();
+    }
+    @FXML
+    private TableView table;
+    @FXML
+    ComboBox Box;
+    String selected;
+    public void initialize(){
+        Box.getItems().add("ID");
+        Box.getItems().add("Plate Number");
+        Box.getItems().add("Allowed to drive");
+        Box.getItems().add("End Date");
+
     }
 }

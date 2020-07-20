@@ -47,6 +47,13 @@ public class CustomerNextScreen {
         window.setScene(tablescene);
         window.show();
     }
+    public void back (javafx.event.ActionEvent actionEvent) throws IOException {
+        Parent root = FXMLLoader.load(getClass().getResource("CustomerScreen.fxml"));
+        Scene tablescene = new Scene(root);
+        Stage window = (Stage)((Node) actionEvent.getSource()).getScene().getWindow();
+        window.setScene(tablescene);
+        window.show();
+    }
 
     public void clearFields(ActionEvent actionEvent) {
         licnese_number.setText("");
