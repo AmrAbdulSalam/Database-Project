@@ -151,6 +151,14 @@ public class CustomerScreen {
         window.show();
 
     }
+
+    public void personalInfo(MouseEvent mouseEvent) throws IOException {
+        Parent root = FXMLLoader.load(getClass().getResource("PersonalInformation.fxml"));
+        Scene tablescene = new Scene(root);
+        Stage window = (Stage)((Node) mouseEvent.getSource()).getScene().getWindow();
+        window.setScene(tablescene);
+        window.show();
+    }
 }
 
 

@@ -52,7 +52,7 @@ public class DailyReportsScreen {
     @FXML
     private TableView tableView;
     @FXML
-    ComboBox comboBox;
+    private ComboBox comboBox;
     String selected;
     public void initialize(){
      comboBox.getItems().add("Licence Number");
@@ -60,6 +60,14 @@ public class DailyReportsScreen {
      comboBox.getItems().add("Start Date");
      comboBox.getItems().add("End Date");
 
+    }
+
+    public void personalInfo(MouseEvent mouseEvent) throws IOException {
+        Parent root = FXMLLoader.load(getClass().getResource("PersonalInformation.fxml"));
+        Scene tablescene = new Scene(root);
+        Stage window = (Stage)((Node) mouseEvent.getSource()).getScene().getWindow();
+        window.setScene(tablescene);
+        window.show();
     }
 //    public void select(ItemEvent e){
 //            selected= comboBox.getSelectionModel().getSelectedItem().toString();

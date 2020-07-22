@@ -1,12 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.*?>
-<?import javafx.scene.image.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.shape.*?>
-<?import javafx.scene.text.*?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="500.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.MainPage">
+<AnchorPane prefHeight="500.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.MainPage">
    <children>
       <AnchorPane layoutX="223.0" prefHeight="501.0" prefWidth="615.0" style="-fx-background-image: url('\main-Page.jpg');" stylesheets="@css.css">
          <children>
@@ -31,7 +32,7 @@
          <children>
             <AnchorPane layoutX="14.0" layoutY="28.0" prefHeight="40.0" prefWidth="66.0">
                <children>
-                  <ImageView fitHeight="23.0" fitWidth="24.0" layoutX="22.0" layoutY="15.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fitHeight="23.0" fitWidth="24.0" layoutX="22.0" layoutY="15.0" onMouseClicked="#personalInfo" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@t1.png" />
                      </image>

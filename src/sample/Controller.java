@@ -50,6 +50,8 @@ public class Controller {
                 "weather or natural disasters,and damage sustained by\n" +
                 "colliding with stationary objects. ");
     }
+
+
     public void register(ActionEvent Event) throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("Registration.fxml"));
         Scene tablescene = new Scene(root);

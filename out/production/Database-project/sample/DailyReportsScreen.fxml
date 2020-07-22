@@ -1,18 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.*?>
-<?import javafx.scene.image.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.shape.*?>
-<?import javafx.scene.text.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="500.0" prefWidth="799.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.DailyReportsScreen">
+<AnchorPane prefHeight="500.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.DailyReportsScreen">
 
     <AnchorPane prefHeight="501.0" prefWidth="219.0" style="-fx-background-color:  #ADD8E6;">
         <children>
             <AnchorPane layoutX="14.0" layoutY="28.0" prefHeight="40.0" prefWidth="66.0">
                 <children>
-                    <ImageView fitHeight="23.0" fitWidth="24.0" layoutX="22.0" layoutY="15.0" pickOnBounds="true" preserveRatio="true">
+                    <ImageView fitHeight="23.0" fitWidth="24.0" layoutX="22.0" layoutY="15.0" onMouseClicked="#personalInfo" pickOnBounds="true" preserveRatio="true">
                         <image>
                             <Image url="@t1.png" />
                         </image>
@@ -51,18 +57,26 @@
             </AnchorPane>
         </children>
     </AnchorPane>
-   <TableView fx:id="tableView" layoutX="221.0" layoutY="94.0" prefHeight="410.0" prefWidth="578.0">
+   <TableView fx:id="tableView" layoutX="221.0" layoutY="126.0" prefHeight="373.0" prefWidth="577.0">
      <columns>
-       <TableColumn prefWidth="127.0" text="License Number" />
-         <TableColumn prefWidth="127.0" text="Car Owner" />
-         <TableColumn prefWidth="127.0" text="Start Date " />
+       <TableColumn prefWidth="109.0" text="License Number" />
+         <TableColumn prefWidth="125.0" text="Car Owner" />
+         <TableColumn prefWidth="147.0" text="Start Date " />
          <TableColumn prefWidth="127.0" text="End Date" />
          <TableColumn prefWidth="71.0" text="Price" />
      </columns>
    </TableView>
-   <Label layoutX="230.0" layoutY="24.0" prefHeight="26.0" prefWidth="66.0" style="-fx-background-radius: 20; -fx-background-color: #ADD8E6;" text="  Search by" />
-   <ComboBox fx:id="comboBox" layoutX="230.0" layoutY="60.0" prefWidth="150.0" style="-fx-border-width: 0.5px; -fx-border-color: #ACACAC; -fx-border-radius: 50px; -fx-background-radius: 50px; -fx-padding: 0px;" />
-   <TextField layoutX="380.0" layoutY="61.0" prefHeight="23.0" prefWidth="138.0" style="-fx-background-radius: 10;" />
-   <Button layoutX="527.0" layoutY="61.0" mnemonicParsing="false" prefHeight="22.0" prefWidth="54.0" style="-fx-background-radius: 10;" text="Submit" />
+   <ComboBox fx:id="comboBox" layoutX="304.0" layoutY="85.0" prefWidth="150.0" style="-fx-border-width: 0.5px; -fx-border-color: #ACACAC; -fx-border-radius: 50px; -fx-background-radius: 50px; -fx-padding: 0px;" />
+   <TextField layoutX="465.0" layoutY="86.0" prefHeight="23.0" prefWidth="138.0" style="-fx-background-radius: 10;" />
+   <Button layoutX="615.0" layoutY="86.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="92.0" style="-fx-background-radius: 10;" styleClass="button-library" stylesheets="@css.css" text="Submit" />
+   <AnchorPane layoutX="280.0" layoutY="-1.0" prefHeight="68.0" prefWidth="438.0" style="-fx-background-color: #ADD8E6;" AnchorPane.leftAnchor="290.0" AnchorPane.rightAnchor="80.0">
+      <children>
+         <Label layoutX="154.0" layoutY="22.0" prefHeight="25.0" prefWidth="102.0" text="Daily Reports" textFill="WHITE" AnchorPane.leftAnchor="154.0">
+            <font>
+               <Font size="16.0" />
+            </font>
+         </Label>
+      </children>
+   </AnchorPane>
 
 </AnchorPane>
