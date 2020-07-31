@@ -2,6 +2,7 @@ package sample;
 
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -20,7 +21,19 @@ import java.net.URI;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class DailyReportsScreen {
+public class DailyReportsScreen implements Initializable {
+    @FXML
+    private TableView tableView;
+    @FXML
+    private ComboBox comboBox;
+    String selected;
+    String items [] = {""};
+    @FXML
+    private Label setNameLabel;
+
+    public DailyReportsScreen(){
+
+    }
 
     public void checkFields(MouseEvent mouseEvent) throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("sample.fxml"));
@@ -49,18 +62,6 @@ public class DailyReportsScreen {
         window.setScene(tablescene);
         window.show();
     }
-    @FXML
-    private TableView tableView;
-    @FXML
-    private ComboBox comboBox;
-    String selected;
-    public void initialize(){
-     comboBox.getItems().add("Licence Number");
-     comboBox.getItems().add("ID");
-     comboBox.getItems().add("Start Date");
-     comboBox.getItems().add("End Date");
-
-    }
 
     public void personalInfo(MouseEvent mouseEvent) throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("PersonalInformation.fxml"));
@@ -69,21 +70,10 @@ public class DailyReportsScreen {
         window.setScene(tablescene);
         window.show();
     }
-//    public void select(ItemEvent e){
-//            selected= comboBox.getSelectionModel().getSelectedItem().toString();
-//            if (selected.equals("License Number")) {
-//            String l = JOptionPane.showInputDialog("Enter License Number");
-//            }
-//            else if(selected.equals("ID")){
-//                JOptionPane.showInputDialog("Enter ID");
-//            }
-//            else if(selected.equals("Start Date")){
-//                JOptionPane.showInputDialog(new DatePicker());
-//            }
-//            else if(selected.equals("End Date")){
-//                JOptionPane.showInputDialog(new DatePicker(),new Button("ok"));
-//            }
-//
-//        }
+
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        setNameLabel.setText(UserInformation.getName()+" "+UserInformation.getLastname());
     }
+}
 

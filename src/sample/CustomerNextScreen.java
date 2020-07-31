@@ -3,6 +3,7 @@ package sample;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -11,10 +12,17 @@ import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
+import javax.swing.*;
 import java.io.IOException;
+import java.net.URL;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.Statement;
+import java.util.ResourceBundle;
 
-public class CustomerNextScreen {
-
+public class CustomerNextScreen implements Initializable {
+    private int index;
     @FXML
     private RadioButton privatebtn, taxibtn ;
     @FXML
@@ -41,11 +49,61 @@ public class CustomerNextScreen {
     }
 
     public void nextScreen(ActionEvent actionEvent) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("insuranceScreen.fxml"));
-        Scene tablescene = new Scene(root);
-        Stage window = (Stage)((Node) actionEvent.getSource()).getScene().getWindow();
-        window.setScene(tablescene);
-        window.show();
+
+        try{
+          if(Character.isLetter(Integer.parseInt(licnese_number.getText()))){
+            JOptionPane.showMessageDialog(null , "License number should not contain a letter");
+          }
+          else {
+            if (licnese_number.getText().isEmpty() || car_color.getText().isEmpty() || vin_number.getText().isEmpty() || manufactured_company.getText().isEmpty()){
+                JOptionPane.showMessageDialog(null , "Texts cannot be empty!");
+            }
+            else{
+                int id = Integer.parseInt(licnese_number.getText());
+                //save to database
+
+                DriverManager.registerDriver(new oracle.jdbc.driver.OracleDriver());
+                String url = "jdbc:oracle:thin:@localhost:1521:orcl";
+                Connection connection = DriverManager.getConnection(url , "amrproj" , "123456");
+                Statement statement = connection.createStatement();
+                String insert_item = "insert into viehcle values ("+id+ ",'" +vin_number.getText() +"','" +car_color.getText() +"','" +
+                        manufactured_company.getText() +"',"+UserInformation.getId()+","+UserInformation.getCustomer_id()+","+UserInformation.getBank_id()+")";
+                statement.executeUpdate(insert_item);
+                connection.commit();
+                connection.close();
+            }
+
+          }
+
+            //check the radio button :
+            if (privatebtn.isSelected()){
+                if (p_model.getText().isEmpty() || p_price.getText().isEmpty() || engine_power.getText().isEmpty()){
+                    JOptionPane.showMessageDialog(null , "Text cannot be Empty!");
+                }
+                else {
+                    PrivateCar.setEngine_pow(engine_power.getText());
+                    PrivateCar.setModel(p_model.getText());
+                    PrivateCar.setPrice(p_price.getText());
+                    PrivateCar.setLicence_no(Integer.parseInt(licnese_number.getText()));
+                }
+            }
+            else if(taxibtn.isSelected()){
+
+            }
+
+            //moving to next screen
+            Parent root = FXMLLoader.load(getClass().getResource("insuranceScreen.fxml"));
+            Scene tablescene = new Scene(root);
+            Stage window = (Stage)((Node) actionEvent.getSource()).getScene().getWindow();
+            window.setScene(tablescene);
+            window.show();
+
+        }catch (Exception e){
+            JOptionPane.showMessageDialog(null,e.toString());
+        }
+
+
+
     }
     public void back (javafx.event.ActionEvent actionEvent) throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("CustomerScreen.fxml"));
@@ -108,5 +166,10 @@ public class CustomerNextScreen {
         engine_power.setDisable(true);
         t_model.requestFocus();
 
+    }
+
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        privatebtn.setSelected(true);
     }
 }

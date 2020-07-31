@@ -25,7 +25,7 @@
                 </children>
             </AnchorPane>
             <Line endX="162.00001525878906" endY="-31.0" layoutX="56.0" layoutY="126.0" startX="-55.99998474121094" startY="-31.0" />
-            <Label layoutX="72.0" layoutY="48.0" text="Welcome ..." textFill="WHITE">
+            <Label fx:id="specialName" layoutX="72.0" layoutY="48.0" text="Welcome ..." textFill="WHITE">
                 <font>
                     <Font name="System Bold" size="15.0" />
                 </font>
@@ -77,12 +77,12 @@
        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
      </rowConstraints>
       <children>
-         <TextField disable="true" promptText="                         Amr AbdulSalam" GridPane.columnIndex="1" />
-         <TextField disable="true" promptText="                         5000$" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+         <TextField fx:id="salary" disable="true" promptText="                         5000$" GridPane.columnIndex="1" GridPane.rowIndex="1" />
          <TextField disable="true" promptText="                         24/5/2010" GridPane.columnIndex="1" GridPane.rowIndex="2" />
          <Label text="Name" />
          <Label text="Salary" GridPane.rowIndex="1" />
          <Label text="Start_Date" GridPane.rowIndex="2" />
+         <TextField fx:id="name" disable="true" prefHeight="24.0" prefWidth="282.0" promptText="Amr Abdulsalam" GridPane.columnIndex="1" />
       </children>
    </GridPane>
    <GridPane layoutX="296.0" layoutY="232.0" prefHeight="143.0" prefWidth="377.0">
@@ -96,8 +96,8 @@
          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
       </rowConstraints>
       <children>
-         <TextField disable="true" promptText="                         24/5/2010" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-         <TextField disable="true" promptText="                         koko123Vr-s8" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+         <TextField fx:id="birthday" disable="true" promptText="                         24/5/2010" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+         <TextField fx:id="username" disable="true" promptText="                         koko123Vr-s8" GridPane.columnIndex="1" GridPane.rowIndex="2" />
          <Label text="Birthday" GridPane.rowIndex="1" />
          <Label text="Username" GridPane.rowIndex="2" />
       </children>

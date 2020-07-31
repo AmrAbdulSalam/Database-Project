@@ -3,9 +3,11 @@ package sample;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Label;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleGroup;
@@ -18,8 +20,16 @@ import javafx.stage.Stage;
 import javax.swing.*;
 import java.awt.*;
 import java.io.IOException;
+import java.net.URL;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.ResourceBundle;
 
-public class CustomerScreen {
+public class CustomerScreen implements Initializable {
+    @FXML
+    private Label setNameLabel;
     //text fields for perosnal insurenace!!
     @FXML
     private TextField phone_personal , department_personal , city_personal , street_personal , lastname_personal , midname_personal , id_perosnal;
@@ -73,9 +83,6 @@ public class CustomerScreen {
         window.show();
     }
 
-    public void goToCustomer(MouseEvent mouseEvent) {
-        //do nothing!
-    }
 
     public void BankButton(ActionEvent actionEvent) {
 
@@ -101,10 +108,8 @@ public class CustomerScreen {
     }
 
     public void personalButton(ActionEvent actionEvent) {
-
-
+        //setFoucs and disable bank textfileds!
         setBankVisable();
-
         id_perosnal.setDisable(false);
         phone_personal.setDisable(false);
         midname_personal.setDisable(false);
@@ -114,6 +119,7 @@ public class CustomerScreen {
         city_personal.setDisable(false);
         personname.setDisable(false);
         personname.requestFocus();
+
     }
 
     public void clearFields(ActionEvent actionEvent) {
@@ -126,6 +132,7 @@ public class CustomerScreen {
             bank_mid.setText("");
             bank_last.setText("");
             bank_id.setText("");
+            bankname.requestFocus();
         }
         else if (personalcar.isSelected()){
             id_perosnal.setText("");
@@ -136,19 +143,101 @@ public class CustomerScreen {
             department_personal.setText("");
             city_personal.setText("");
             personname.setText("");
+            personname.requestFocus();
         }
     }
 
-    public void nextScreen(ActionEvent actionEvent) throws IOException {
+    public void nextScreen(ActionEvent actionEvent) throws IOException, SQLException {
         //database code to save from textfields
+
+        if (personalcar.isSelected()){
+            //Pesonal information are ready for database
+            if (personname.getText().isEmpty() || midname_personal.getText().isEmpty() ||lastname_personal.getText().isEmpty()
+            ||city_personal.getText().isEmpty() || street_personal.getText().isEmpty()||
+            id_perosnal.getText().isEmpty() || phone_personal.getText().isEmpty()){
+                JOptionPane.showMessageDialog(null , "Texts should not be EMPTY!!");
+            }
+            else{
+
+                int id , phone;
+
+                try {
+                    if (Character.isLetter(Integer.parseInt(id_perosnal.getText())) || (Character.isLetter(Integer.parseInt(phone_personal.getText())))) {
+                        JOptionPane.showMessageDialog(null, "ID or PhoneNumber should not contains charters");
+                    } else {
+                        id = Integer.parseInt(id_perosnal.getText());
+                        phone = Integer.parseInt(phone_personal.getText());
+                        //insert database information :
+
+                        DriverManager.registerDriver(new oracle.jdbc.driver.OracleDriver());
+                        String url = "jdbc:oracle:thin:@localhost:1521:orcl";
+                        Connection connection = DriverManager.getConnection(url , "amrproj" , "123456");
+                        Statement statement = connection.createStatement();
+                        String tes1 = "insert into customer values("+id+",'" +personname.getText()+"','" +midname_personal.getText() + "','"+lastname_personal.getText()+
+                                "',"+phone+",'" +street_personal.getText() +"','" +city_personal.getText() + "','" + department_personal.getText() +"'," + UserInformation.getId()+")";
+
+                        statement.executeUpdate(tes1);
+                        connection.commit();
+                        connection.close();
+                        UserInformation.setCustomer_id(id);
+                        //moving to next screen
+                        Parent root = FXMLLoader.load(getClass().getResource("CustomerNextScreen.fxml"));
+                        Scene tablescene = new Scene(root);
+                        Stage window = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
+                        window.setScene(tablescene);
+                        window.show();
+                    }
+                }catch (Exception e){
+                    JOptionPane.showMessageDialog(null , "Invalid inputs");
+                }
+            }
+        }//end of persnal car selected
+        else if(bankid.isSelected()){
+
+            if(bankname.getText().isEmpty() || bank_street.getText().isEmpty() || bank_city.getText().isEmpty() ||
+            bank_first.getText().isEmpty() || bank_mid.getText().isEmpty() || bank_last.getText().isEmpty() || bank_id.getText().isEmpty()){
+                JOptionPane.showMessageDialog(null , "Texts cannot be Empty");
+            }
+            else {
+                try {
+
+                    if (Character.isLetter(Integer.parseInt(bank_id.getText()))) {
+                        JOptionPane.showMessageDialog(null, "ID should not containes character ");
+                    } else {
+                        int id = Integer.parseInt(bank_id.getText());
+
+                        //database connection
+                        String url = "jdbc:oracle:thin:@localhost:1521:orcl";
+                        Connection connection = DriverManager.getConnection(url, "amrproj", "123456");
+                        Statement statement = connection.createStatement();
+
+                        String items = "insert into BANK values(" + "'" + bankname.getText() + "','" + bank_street.getText() + "','" + bank_city.getText() + "','" +
+                                bank_department.getText() + "'," + UserInformation.getId() + ",'" + bank_first.getText() + "','" + bank_mid.getText() + "','" +
+                                bank_last.getText() + "'," + id + ")";
+
+                        statement.executeUpdate(items);
+                        //System.out.println(items);
+                        connection.commit();
+                        connection.close();
+                        UserInformation.setBank_id(id);
+                        //moving to next screen
+                        Parent root = FXMLLoader.load(getClass().getResource("CustomerNextScreen.fxml"));
+                        Scene tablescene = new Scene(root);
+                        Stage window = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
+                        window.setScene(tablescene);
+                        window.show();
+
+                    }
+                }
+                catch (Exception e){
+                    JOptionPane.showMessageDialog(null ,"Invalid inputs!");
+                }
+                }// end of else
+        }
+
 
         //ends here
         //go to second screen now
-        Parent root = FXMLLoader.load(getClass().getResource("CustomerNextScreen.fxml"));
-        Scene tablescene = new Scene(root);
-        Stage window = (Stage)((Node) actionEvent.getSource()).getScene().getWindow();
-        window.setScene(tablescene);
-        window.show();
 
     }
 
@@ -158,6 +247,13 @@ public class CustomerScreen {
         Stage window = (Stage)((Node) mouseEvent.getSource()).getScene().getWindow();
         window.setScene(tablescene);
         window.show();
+    }
+
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        setNameLabel.setText(UserInformation.getName()+" " + UserInformation.getLastname());
+        personalcar.setSelected(true);
+
     }
 }
 
