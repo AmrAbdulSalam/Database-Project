@@ -18,7 +18,13 @@ import java.util.ResourceBundle;
 
 public class UpdateScreen implements Initializable {
     @FXML
+    private ComboBox firstCombo;
+    @FXML
     private Label setNameLabel;
+    private String tables [] = {"Bank" , "Customer" , "Insurance" , "PrivateCar" , "Taxi"};
+    public UpdateScreen(){
+
+    }
 
     public void checkFields(MouseEvent mouseEvent) throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("sample.fxml"));
@@ -47,16 +53,9 @@ public class UpdateScreen implements Initializable {
         window.setScene(tablescene);
         window.show();
     }
-    @FXML
-    private TableView table;
-    @FXML
-    ComboBox Box;
-    String selected;
+
+
     public void initialize(){
-        Box.getItems().add("ID");
-        Box.getItems().add("Plate Number");
-        Box.getItems().add("Allowed to drive");
-        Box.getItems().add("End Date");
 
     }
 

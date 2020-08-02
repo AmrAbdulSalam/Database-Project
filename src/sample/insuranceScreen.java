@@ -56,38 +56,59 @@ public class insuranceScreen implements Initializable {
                 act_text = "1";
             }
 
-            //save to database
             PrivateCar.setPayer_id(Integer.parseInt(payer_id.getText()));
+
             DriverManager.registerDriver(new oracle.jdbc.driver.OracleDriver());
             String url = "jdbc:oracle:thin:@localhost:1521:orcl";
-            Connection connection = DriverManager.getConnection(url , "amrproj" , "123456");
+            Connection connection = DriverManager.getConnection(url, "amrproj", "123456");
             Statement statement = connection.createStatement();
-            //insert into insurance table
-            String insert_item = "insert into insurance values("+Integer.parseInt(payer_id.getText())+",'"+start.getValue()+"','"
-                    +end.getValue()+"','"+days.getText()+"','"+full_text+"','"+act_text+"','"+f_name.getText()+"','"+m_name.getText()+"','"+l_name.getText()+"')";
+            //adding to insurance table
+            String insert_item = "insert into insurance values(" + Integer.parseInt(payer_id.getText()) + ",'" + start.getValue() + "','"
+                    + end.getValue() + "','" + days.getText() + "','" + full_text + "','" + act_text + "','" + f_name.getText() + "','" + m_name.getText() + "','" + l_name.getText() + "')";
             statement.executeUpdate(insert_item);
             connection.commit();
-            //generate new index :
-            String searchIndex = "select indexx from privatee ";
-            ResultSet indsearch = statement.executeQuery(searchIndex);
-            while (indsearch.next()){
-                index = indsearch.getInt(1);
+
+            if (PrivateCar.isSelectPrivate()) {
+
+
+                //generate new index :
+                String searchIndex = "select indexx from privatee ";
+                ResultSet indsearch = statement.executeQuery(searchIndex);
+                while (indsearch.next()) {
+                    index = indsearch.getInt(1);
+                }
+                index += 1;
+                //insert into private cars table
+                String insert_private = "insert into privatee values(" + index + ",'" + PrivateCar.getPrice() + "','" + PrivateCar.getEngine_pow() + "','" +
+                        PrivateCar.getModel() + "'," + PrivateCar.getPayer_id() + "," + PrivateCar.getLicence_no() + ")";
+                statement.executeUpdate(insert_private);
+                connection.commit();
+                connection.close();
+
+                Parent root = FXMLLoader.load(getClass().getResource("MainPage.fxml"));
+                Scene tablescene = new Scene(root);
+                Stage window = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
+                window.setScene(tablescene);
+                window.show();
+
             }
-            index +=1;
-            //insert into private cars table
-            String insert_private = "insert into privatee values("+index+",'"+PrivateCar.getPrice()+"','"+PrivateCar.getEngine_pow()+"','"+
-                    PrivateCar.getModel()+"',"+PrivateCar.getPayer_id()+","+PrivateCar.getLicence_no()+")";
-            statement.executeUpdate(insert_private);
-            connection.commit();
-            connection.close();
+            else if (TaxiInfo.isSelectTaxi()){
+                String insert_taxi = "insert into taxi values ("+TaxiInfo.getPhone()+",'" +TaxiInfo.getLocation() +"','"+TaxiInfo.getPrice()+"','"+
+                        TaxiInfo.getNo_dirver()+"',"+TaxiInfo.getLicenc_no() +","+Integer.parseInt(payer_id.getText()) + ",'" +TaxiInfo.getModel() +"','"
+                        +TaxiInfo.getName()+"')";
 
+                statement.executeUpdate(insert_taxi);
+                connection.commit();
+                connection.close();
 
+                Parent root = FXMLLoader.load(getClass().getResource("MainPage.fxml"));
+                Scene tablescene = new Scene(root);
+                Stage window = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
+                window.setScene(tablescene);
+                window.show();
+            }
             //go to the main page
-            Parent root = FXMLLoader.load(getClass().getResource("MainPage.fxml"));
-            Scene tablescene = new Scene(root);
-            Stage window = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
-            window.setScene(tablescene);
-            window.show();
+
         }
     }catch (Exception e){
         JOptionPane.showMessageDialog(null , e.toString());

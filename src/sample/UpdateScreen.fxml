@@ -67,7 +67,7 @@
        <TableColumn prefWidth="70.4000122070313" text="Price" />
      </columns>
    </TableView>
-   <ComboBox fx:id="Box" layoutX="314.0" layoutY="85.0" prefHeight="27.0" prefWidth="135.0" style="-fx-border-width: 0.5px; -fx-border-color: #ACACAC; -fx-border-radius: 50px; -fx-background-radius: 50px; -fx-padding: 0px;" />
+   <ComboBox fx:id="firstCombo" layoutX="314.0" layoutY="85.0" prefHeight="27.0" prefWidth="135.0" style="-fx-border-width: 0.5px; -fx-border-color: #ACACAC; -fx-border-radius: 50px; -fx-background-radius: 50px; -fx-padding: 0px;" />
    <TextField layoutX="460.0" layoutY="85.0" prefHeight="25.0" prefWidth="146.0" style="-fx-background-radius: 10;" />
    <Button layoutX="623.0" layoutY="86.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="92.0" style="-fx-background-radius: 10;" styleClass="button-library" stylesheets="@css.css" text="submit" />
 

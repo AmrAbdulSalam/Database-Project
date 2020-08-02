@@ -4,7 +4,7 @@ public class PrivateCar {
 
     private static String model ,price , engine_pow;
     private static int index , licence_no , payer_id;
-
+    private static boolean selectPrivate;
 
     public static void setEngine_pow(String engine_pow) {
         PrivateCar.engine_pow = engine_pow;
@@ -54,4 +54,11 @@ public class PrivateCar {
         return payer_id;
     }
 
+    public static void setSelectPrivate(boolean selectPrivate) {
+        PrivateCar.selectPrivate = selectPrivate;
+    }
+
+    public static boolean isSelectPrivate() {
+        return selectPrivate;
+    }
 }

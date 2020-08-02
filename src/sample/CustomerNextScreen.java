@@ -51,29 +51,7 @@ public class CustomerNextScreen implements Initializable {
     public void nextScreen(ActionEvent actionEvent) throws IOException {
 
         try{
-          if(Character.isLetter(Integer.parseInt(licnese_number.getText()))){
-            JOptionPane.showMessageDialog(null , "License number should not contain a letter");
-          }
-          else {
-            if (licnese_number.getText().isEmpty() || car_color.getText().isEmpty() || vin_number.getText().isEmpty() || manufactured_company.getText().isEmpty()){
-                JOptionPane.showMessageDialog(null , "Texts cannot be empty!");
-            }
-            else{
-                int id = Integer.parseInt(licnese_number.getText());
-                //save to database
 
-                DriverManager.registerDriver(new oracle.jdbc.driver.OracleDriver());
-                String url = "jdbc:oracle:thin:@localhost:1521:orcl";
-                Connection connection = DriverManager.getConnection(url , "amrproj" , "123456");
-                Statement statement = connection.createStatement();
-                String insert_item = "insert into viehcle values ("+id+ ",'" +vin_number.getText() +"','" +car_color.getText() +"','" +
-                        manufactured_company.getText() +"',"+UserInformation.getId()+","+UserInformation.getCustomer_id()+","+UserInformation.getBank_id()+")";
-                statement.executeUpdate(insert_item);
-                connection.commit();
-                connection.close();
-            }
-
-          }
 
             //check the radio button :
             if (privatebtn.isSelected()){
@@ -81,25 +59,105 @@ public class CustomerNextScreen implements Initializable {
                     JOptionPane.showMessageDialog(null , "Text cannot be Empty!");
                 }
                 else {
+
+                    if(Character.isLetter(Integer.parseInt(licnese_number.getText()))){
+                        JOptionPane.showMessageDialog(null , "License number should not contain a letter");
+                    }
+                    else {
+                        if (licnese_number.getText().isEmpty() || car_color.getText().isEmpty() || vin_number.getText().isEmpty() || manufactured_company.getText().isEmpty() ||p_model.getText().isEmpty()
+                                ||p_price.getText().isEmpty() || engine_power.getText().isEmpty()){
+                            JOptionPane.showMessageDialog(null , "Texts cannot be empty!");
+                        }
+                        else{
+                            int id = Integer.parseInt(licnese_number.getText());
+                            //save to database
+
+                            DriverManager.registerDriver(new oracle.jdbc.driver.OracleDriver());
+                            String url = "jdbc:oracle:thin:@localhost:1521:orcl";
+                            Connection connection = DriverManager.getConnection(url , "amrproj" , "123456");
+                            Statement statement = connection.createStatement();
+                            String insert_item = "insert into viehcle values ("+id+ ",'" +vin_number.getText() +"','" +car_color.getText() +"','" +
+                                    manufactured_company.getText() +"',"+UserInformation.getId()+","+UserInformation.getCustomer_id()+","+UserInformation.getBank_id()+")";
+                            statement.executeUpdate(insert_item);
+                            connection.commit();
+                            connection.close();
+                        }
+
+                    }
+
                     PrivateCar.setEngine_pow(engine_power.getText());
                     PrivateCar.setModel(p_model.getText());
                     PrivateCar.setPrice(p_price.getText());
                     PrivateCar.setLicence_no(Integer.parseInt(licnese_number.getText()));
+
+                    TaxiInfo.setSelectTaxi(false);
+                    PrivateCar.setSelectPrivate(true);
+
+                    //moving to next screen
+                    Parent root = FXMLLoader.load(getClass().getResource("insuranceScreen.fxml"));
+                    Scene tablescene = new Scene(root);
+                    Stage window = (Stage)((Node) actionEvent.getSource()).getScene().getWindow();
+                    window.setScene(tablescene);
+                    window.show();
                 }
             }
             else if(taxibtn.isSelected()){
+                if (t_model.getText().isEmpty() || t_price.getText().isEmpty() || t_no.getText().isEmpty() || t_phone.getText().isEmpty() ||
+                t_location.getText().isEmpty() || t_name.getText().isEmpty()){
+                    JOptionPane.showMessageDialog(null , "Text cannot be Empty");
+                }
+                else if (Character.isLetter(Integer.parseInt(t_phone.getText()))){
+                    JOptionPane.showMessageDialog(null , "Phone should not contain characters");
+                }else{
 
+                    if(Character.isLetter(Integer.parseInt(licnese_number.getText()))){
+                        JOptionPane.showMessageDialog(null , "License number should not contain a letter");
+                    }
+                    else {
+                        if (licnese_number.getText().isEmpty() || car_color.getText().isEmpty() || vin_number.getText().isEmpty() || manufactured_company.getText().isEmpty()){
+                            JOptionPane.showMessageDialog(null , "Texts cannot be empty!");
+                        }
+                        else{
+
+                            int id = Integer.parseInt(licnese_number.getText());
+                            //save to database
+
+                            DriverManager.registerDriver(new oracle.jdbc.driver.OracleDriver());
+                            String url = "jdbc:oracle:thin:@localhost:1521:orcl";
+                            Connection connection = DriverManager.getConnection(url , "amrproj" , "123456");
+                            Statement statement = connection.createStatement();
+                            String insert_item = "insert into viehcle values ("+id+ ",'" +vin_number.getText() +"','" +car_color.getText() +"','" +
+                                    manufactured_company.getText() +"',"+UserInformation.getId()+","+UserInformation.getCustomer_id()+","+UserInformation.getBank_id()+")";
+                            statement.executeUpdate(insert_item);
+                            connection.commit();
+                            connection.close();
+                        }
+
+                    }
+
+
+                    TaxiInfo.setLocation(t_location.getText());
+                    TaxiInfo.setModel(t_model.getText());
+                    TaxiInfo.setNo_dirver(t_no.getText());
+                    TaxiInfo.setPhone(Integer.parseInt(t_phone.getText()));
+                    TaxiInfo.setName(t_name.getText());
+                    TaxiInfo.setLicenc_no(Integer.parseInt(licnese_number.getText()));
+                    TaxiInfo.setPrice(t_price.getText());
+                    TaxiInfo.setSelectTaxi(true);
+                    PrivateCar.setSelectPrivate(false);
+                    //moving to next screen
+                    Parent root = FXMLLoader.load(getClass().getResource("insuranceScreen.fxml"));
+                    Scene tablescene = new Scene(root);
+                    Stage window = (Stage)((Node) actionEvent.getSource()).getScene().getWindow();
+                    window.setScene(tablescene);
+                    window.show();
+                }
             }
 
-            //moving to next screen
-            Parent root = FXMLLoader.load(getClass().getResource("insuranceScreen.fxml"));
-            Scene tablescene = new Scene(root);
-            Stage window = (Stage)((Node) actionEvent.getSource()).getScene().getWindow();
-            window.setScene(tablescene);
-            window.show();
+
 
         }catch (Exception e){
-            JOptionPane.showMessageDialog(null,e.toString());
+            JOptionPane.showMessageDialog(null,"Invalid inputs!!");
         }
 
 
