@@ -32,6 +32,7 @@ public class CustomerNextScreen implements Initializable {
 
     @FXML
     private TextField t_model , t_price , t_name, t_phone, t_location, t_no ;
+    public static String private_or_taxi;
 
     public CustomerNextScreen (){
         p_model = new TextField();
@@ -55,6 +56,7 @@ public class CustomerNextScreen implements Initializable {
 
             //check the radio button :
             if (privatebtn.isSelected()){
+                private_or_taxi="private";
                 if (p_model.getText().isEmpty() || p_price.getText().isEmpty() || engine_power.getText().isEmpty()){
                     JOptionPane.showMessageDialog(null , "Text cannot be Empty!");
                 }
@@ -69,15 +71,15 @@ public class CustomerNextScreen implements Initializable {
                             JOptionPane.showMessageDialog(null , "Texts cannot be empty!");
                         }
                         else{
-                            int id = Integer.parseInt(licnese_number.getText());
+                            int ln = Integer.parseInt(licnese_number.getText());
                             //save to database
 
                             DriverManager.registerDriver(new oracle.jdbc.driver.OracleDriver());
                             String url = "jdbc:oracle:thin:@localhost:1521:orcl";
                             Connection connection = DriverManager.getConnection(url , "amrproj" , "123456");
                             Statement statement = connection.createStatement();
-                            String insert_item = "insert into viehcle values ("+id+ ",'" +vin_number.getText() +"','" +car_color.getText() +"','" +
-                                    manufactured_company.getText() +"',"+UserInformation.getId()+","+UserInformation.getCustomer_id()+","+UserInformation.getBank_id()+")";
+                            String insert_item = "insert into viehcle values ("+ln+ ",'" +vin_number.getText() +"','" +car_color.getText() +"','" +
+                                    manufactured_company.getText() +"',"+UserInformation.getId()+","+UserInformation.getCustomer_id()+")";
                             statement.executeUpdate(insert_item);
                             connection.commit();
                             connection.close();
@@ -102,6 +104,7 @@ public class CustomerNextScreen implements Initializable {
                 }
             }
             else if(taxibtn.isSelected()){
+                private_or_taxi="taxi";
                 if (t_model.getText().isEmpty() || t_price.getText().isEmpty() || t_no.getText().isEmpty() || t_phone.getText().isEmpty() ||
                 t_location.getText().isEmpty() || t_name.getText().isEmpty()){
                     JOptionPane.showMessageDialog(null , "Text cannot be Empty");
@@ -127,7 +130,7 @@ public class CustomerNextScreen implements Initializable {
                             Connection connection = DriverManager.getConnection(url , "amrproj" , "123456");
                             Statement statement = connection.createStatement();
                             String insert_item = "insert into viehcle values ("+id+ ",'" +vin_number.getText() +"','" +car_color.getText() +"','" +
-                                    manufactured_company.getText() +"',"+UserInformation.getId()+","+UserInformation.getCustomer_id()+","+UserInformation.getBank_id()+")";
+                                    manufactured_company.getText() +"',"+UserInformation.getId()+","+UserInformation.getCustomer_id()+")";
                             statement.executeUpdate(insert_item);
                             connection.commit();
                             connection.close();
@@ -157,7 +160,8 @@ public class CustomerNextScreen implements Initializable {
 
 
         }catch (Exception e){
-            JOptionPane.showMessageDialog(null,"Invalid inputs!!");
+           // JOptionPane.showMessageDialog(null,"invalid input");
+            e.printStackTrace();
         }
 
 

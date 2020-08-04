@@ -163,7 +163,7 @@ public class CustomerScreen implements Initializable {
 
                 try {
                     if (Character.isLetter(Integer.parseInt(id_perosnal.getText())) || (Character.isLetter(Integer.parseInt(phone_personal.getText())))) {
-                        JOptionPane.showMessageDialog(null, "ID or PhoneNumber should not contains charters");
+                       // JOptionPane.showMessageDialog(null, "ID or PhoneNumber should not contains charters");
                     } else {
                         id = Integer.parseInt(id_perosnal.getText());
                         phone = Integer.parseInt(phone_personal.getText());
@@ -173,7 +173,7 @@ public class CustomerScreen implements Initializable {
                         String url = "jdbc:oracle:thin:@localhost:1521:orcl";
                         Connection connection = DriverManager.getConnection(url , "amrproj" , "123456");
                         Statement statement = connection.createStatement();
-                        String tes1 = "insert into customer values("+id+",'" +personname.getText()+"','" +midname_personal.getText() + "','"+lastname_personal.getText()+
+                        String tes1 = "insert into customer (customer_id,fname,midname,lname,phone,street,city,department,emplo_id) values ("+id+",'" +personname.getText()+"','" +midname_personal.getText() + "','"+lastname_personal.getText()+
                                 "',"+phone+",'" +street_personal.getText() +"','" +city_personal.getText() + "','" + department_personal.getText() +"'," + UserInformation.getId()+")";
 
                         statement.executeUpdate(tes1);
@@ -211,7 +211,7 @@ public class CustomerScreen implements Initializable {
                         Connection connection = DriverManager.getConnection(url, "amrproj", "123456");
                         Statement statement = connection.createStatement();
 
-                        String items = "insert into BANK values(" + "'" + bankname.getText() + "','" + bank_street.getText() + "','" + bank_city.getText() + "','" +
+                        String items = "insert into BANK (bank_name,street,city,department,emplo_id,first_name,mid_name,last_name,owner_id) values (" + "'" + bankname.getText() + "','" + bank_street.getText() + "','" + bank_city.getText() + "','" +
                                 bank_department.getText() + "'," + UserInformation.getId() + ",'" + bank_first.getText() + "','" + bank_mid.getText() + "','" +
                                 bank_last.getText() + "'," + id + ")";
 
@@ -219,7 +219,7 @@ public class CustomerScreen implements Initializable {
                         //System.out.println(items);
                         connection.commit();
                         connection.close();
-                        UserInformation.setBank_id(id);
+                        UserInformation.setCustomer_id(id);
                         //moving to next screen
                         Parent root = FXMLLoader.load(getClass().getResource("CustomerNextScreen.fxml"));
                         Scene tablescene = new Scene(root);
@@ -230,7 +230,8 @@ public class CustomerScreen implements Initializable {
                     }
                 }
                 catch (Exception e){
-                    JOptionPane.showMessageDialog(null ,"Invalid inputs!");
+                   JOptionPane.showMessageDialog(null ,"Invalid inputs!");
+                   e.printStackTrace();
                 }
                 }// end of else
         }

@@ -66,11 +66,9 @@ public final class UserInformation {
         return salary;
     }
 
-    //
-
-    public static void setBank_id(int bank_id) {
-        UserInformation.bank_id = bank_id;
-    }
+//    public static void setBank_id(int bank_id) {
+//        UserInformation.bank_id = bank_id;
+//    }
 
     public static void setCustomer_id(int customer_id) {
         UserInformation.customer_id = customer_id;
@@ -80,7 +78,7 @@ public final class UserInformation {
         return customer_id;
     }
 
-    public static int getBank_id() {
-        return bank_id;
-    }
+//    public static int getBank_id() {
+//        return bank_id;
+//    }
 }

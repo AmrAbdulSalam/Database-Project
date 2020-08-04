@@ -1,15 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
-<?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.shape.Line?>
-<?import javafx.scene.text.Font?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.text.*?>
 
-<AnchorPane prefHeight="500.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.MainPage">
+<AnchorPane prefHeight="500.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.MainPage">
    <children>
-      <AnchorPane layoutX="223.0" prefHeight="501.0" prefWidth="615.0" style="-fx-background-image: url('\main-Page.jpg');" stylesheets="@css.css">
+      <AnchorPane layoutX="223.0" prefHeight="501.0" prefWidth="585.0" style="-fx-background-image: url('\main-Page.jpg');" stylesheets="@css.css">
          <children>
             <ImageView fitHeight="217.0" fitWidth="606.0" layoutX="25.0" layoutY="251.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -28,7 +27,7 @@
             </Label>
          </children>
       </AnchorPane>
-      <AnchorPane prefHeight="501.0" prefWidth="219.0" style="-fx-background-color:  #ADD8E6;">
+      <AnchorPane prefHeight="502.0" prefWidth="235.0" style="-fx-background-color:  #ADD8E6;">
          <children>
             <AnchorPane layoutX="14.0" layoutY="28.0" prefHeight="40.0" prefWidth="66.0">
                <children>
@@ -39,34 +38,39 @@
                   </ImageView>
                </children>
             </AnchorPane>
-            <Line endX="180.0" endY="-30.0" layoutX="56.0" layoutY="126.0" startX="-55.99998474121094" startY="-31.0" />
+            <Line endX="201.39999389648438" endY="-30.00000762939453" layoutX="56.0" layoutY="126.0" startX="-55.99998474121094" startY="-31.0" />
             <Label fx:id="setNameLabel" layoutX="72.0" layoutY="48.0" text="Welcome ..." textFill="WHITE">
                <font>
                   <Font name="System Bold" size="15.0" />
                </font>
             </Label>
-            <AnchorPane layoutX="-1.0" layoutY="96.0" prefHeight="47.0" prefWidth="236.0" styleClass="button-change" stylesheets="@css.css">
+            <AnchorPane layoutX="-1.0" layoutY="96.0" prefHeight="49.0" prefWidth="258.0" styleClass="button-change" stylesheets="@css.css">
                <children>
-                  <Label layoutX="-1.0" layoutY="2.0" onMouseClicked="#goToCustomer" prefHeight="47.0" prefWidth="246.0" text="          Customer information">
+                  <Label layoutX="-1.0" layoutY="1.0" onMouseClicked="#goToCustomer" prefHeight="47.0" prefWidth="258.0" text="          Customer information">
                      <font>
                         <Font size="14.0" />
                      </font>
                   </Label>
                </children>
             </AnchorPane>
-            <AnchorPane layoutX="1.0" layoutY="148.0" prefHeight="47.0" prefWidth="235.0" styleClass="button-change" stylesheets="@css.css">
+            <AnchorPane layoutX="1.0" layoutY="148.0" prefHeight="48.0" prefWidth="258.0" styleClass="button-change" stylesheets="@css.css">
                <children>
-                  <Label layoutX="-1.0" layoutY="1.0" onMouseClicked="#goToUpdate" prefHeight="46.0" prefWidth="244.0" styleClass="button-change" stylesheets="@css.css" text="            Update" />
+                  <Label layoutX="-1.0" layoutY="1.0" onMouseClicked="#goToUpdate" prefHeight="46.0" prefWidth="260.0" styleClass="button-change" stylesheets="@css.css" text="            Update" />
                </children>
             </AnchorPane>
             <AnchorPane layoutX="1.0" layoutY="202.0" prefHeight="47.0" prefWidth="221.0" styleClass="button-change" stylesheets="@css.css">
                <children>
-                  <Label layoutX="-2.0" layoutY="1.0" onMouseClicked="#goToDailyReports" prefHeight="47.0" prefWidth="245.0" text="             Daily reports" />
+                  <Label layoutX="-2.0" layoutY="1.0" onMouseClicked="#goToDailyReports" prefHeight="47.0" prefWidth="258.0" text="             Daily reports" />
                </children>
             </AnchorPane>
-            <AnchorPane layoutX="-1.0" layoutY="265.0" onMouseClicked="#checkFields" prefHeight="46.0" prefWidth="221.0" styleClass="button-change" stylesheets="@css.css">
+            <AnchorPane layoutX="-1.0" layoutY="265.0" onMouseClicked="#report" prefHeight="46.0" prefWidth="221.0" styleClass="button-change" stylesheets="@css.css">
                <children>
-                  <Label layoutX="1.0" prefHeight="46.0" prefWidth="246.0" text="              Logout" />
+                  <Label layoutY="-10.0" onMouseClicked="#report" prefHeight="46.0" prefWidth="258.0" styleClass="button-change" stylesheets="@css.css" text="              report" />
+               </children>
+            </AnchorPane>
+            <AnchorPane layoutX="4.0" layoutY="311.0" prefHeight="46.0" prefWidth="254.0" styleClass="button-change" stylesheets="@css.css">
+               <children>
+                  <Label layoutX="-4.0" layoutY="-3.0" onMouseClicked="#logout" prefHeight="46.0" prefWidth="258.0" styleClass="button-change" stylesheets="@css.css" text="             Logout" />
                </children>
             </AnchorPane>
          </children>

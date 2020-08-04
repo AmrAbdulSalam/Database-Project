@@ -1,8 +1,8 @@
 package sample;
 
 public class TaxiInfo {
-    private static String model , price , no_dirver  , location , name;
-    private static int phone , licenc_no;
+    private static String model, price, no_dirver, location, name;
+    private static int phone, licenc_no;
     private static boolean selectTaxi = false;
 
 

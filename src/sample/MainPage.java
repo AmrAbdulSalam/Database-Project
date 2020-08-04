@@ -10,10 +10,12 @@ import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
+import net.sf.jasperreports.engine.JRException;
 
 import javax.swing.*;
 import java.io.IOException;
 import java.net.URL;
+import java.sql.SQLException;
 import java.util.ResourceBundle;
 
 public class MainPage implements Initializable {
@@ -52,10 +54,10 @@ public class MainPage implements Initializable {
         window.setScene(tablescene);
         window.show();
     }
-    public void logout(MouseEvent mouseEvent) throws IOException {
+    public void logout (MouseEvent mouseEvent) throws Exception {
         Parent root = FXMLLoader.load(getClass().getResource("sample.fxml"));
         Scene tablescene = new Scene(root);
-        Stage window = (Stage)((Node) mouseEvent.getSource()).getScene().getWindow();
+        Stage window = (Stage)((Node)mouseEvent.getSource()).getScene().getWindow();
         window.setScene(tablescene);
         window.show();
     }
@@ -66,6 +68,15 @@ public class MainPage implements Initializable {
         Stage window = (Stage)((Node) mouseEvent.getSource()).getScene().getWindow();
         window.setScene(tablescene);
         window.show();
+    }
+    public void report (MouseEvent mouseEvent) {
+
+        printreport viewreport=new printreport();
+        try {
+            viewreport.showReport();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     @Override
