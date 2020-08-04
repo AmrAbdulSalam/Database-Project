@@ -219,7 +219,7 @@ public class CustomerScreen implements Initializable {
                         //System.out.println(items);
                         connection.commit();
                         connection.close();
-                        UserInformation.setBank_id(id);
+                        UserInformation.setCustomer_id(id);
                         //moving to next screen
                         Parent root = FXMLLoader.load(getClass().getResource("CustomerNextScreen.fxml"));
                         Scene tablescene = new Scene(root);

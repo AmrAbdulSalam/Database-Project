@@ -77,7 +77,7 @@ public class CustomerNextScreen implements Initializable {
                             Connection connection = DriverManager.getConnection(url , "amrproj" , "123456");
                             Statement statement = connection.createStatement();
                             String insert_item = "insert into viehcle values ("+id+ ",'" +vin_number.getText() +"','" +car_color.getText() +"','" +
-                                    manufactured_company.getText() +"',"+UserInformation.getId()+","+UserInformation.getCustomer_id()+","+UserInformation.getBank_id()+")";
+                                    manufactured_company.getText() +"',"+UserInformation.getId()+","+UserInformation.getCustomer_id()+")";
                             statement.executeUpdate(insert_item);
                             connection.commit();
                             connection.close();
@@ -127,7 +127,7 @@ public class CustomerNextScreen implements Initializable {
                             Connection connection = DriverManager.getConnection(url , "amrproj" , "123456");
                             Statement statement = connection.createStatement();
                             String insert_item = "insert into viehcle values ("+id+ ",'" +vin_number.getText() +"','" +car_color.getText() +"','" +
-                                    manufactured_company.getText() +"',"+UserInformation.getId()+","+UserInformation.getCustomer_id()+","+UserInformation.getBank_id()+")";
+                                    manufactured_company.getText() +"',"+UserInformation.getId()+","+UserInformation.getCustomer_id()+")";
                             statement.executeUpdate(insert_item);
                             connection.commit();
                             connection.close();

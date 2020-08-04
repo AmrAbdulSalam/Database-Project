@@ -64,7 +64,7 @@ public class insuranceScreen implements Initializable {
             Statement statement = connection.createStatement();
             //adding to insurance table
             String insert_item = "insert into insurance values(" + Integer.parseInt(payer_id.getText()) + ",'" + start.getValue() + "','"
-                    + end.getValue() + "','" + days.getText() + "','" + full_text + "','" + act_text + "','" + f_name.getText() + "','" + m_name.getText() + "','" + l_name.getText() + "')";
+                    + end.getValue() + "','" + days.getText() + "','" + full_text + "','" + act_text + "','" + f_name.getText() + "','" + m_name.getText() + "','" + l_name.getText() +"')";
             statement.executeUpdate(insert_item);
             connection.commit();
 
