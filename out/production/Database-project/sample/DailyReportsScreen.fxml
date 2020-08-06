@@ -59,16 +59,15 @@
     </AnchorPane>
    <TableView fx:id="tableView" layoutX="221.0" layoutY="126.0" prefHeight="373.0" prefWidth="577.0">
      <columns>
-       <TableColumn prefWidth="109.0" text="License Number" />
-         <TableColumn prefWidth="125.0" text="Car Owner" />
-         <TableColumn prefWidth="147.0" text="Start Date " />
-         <TableColumn prefWidth="127.0" text="End Date" />
-         <TableColumn prefWidth="71.0" text="Price" />
+       <TableColumn prefWidth="128.0" text="License Number" />
+         <TableColumn prefWidth="145.0" text="Car Owner" />
+         <TableColumn prefWidth="150.0" text="Start Date " />
+         <TableColumn prefWidth="153.0" text="End Date" />
      </columns>
    </TableView>
-   <ComboBox fx:id="comboBox" layoutX="304.0" layoutY="85.0" prefWidth="150.0" style="-fx-border-width: 0.5px; -fx-border-color: #ACACAC; -fx-border-radius: 50px; -fx-background-radius: 50px; -fx-padding: 0px;" />
-   <TextField layoutX="465.0" layoutY="86.0" prefHeight="23.0" prefWidth="138.0" style="-fx-background-radius: 10;" />
-   <Button layoutX="615.0" layoutY="86.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="92.0" style="-fx-background-radius: 10;" styleClass="button-library" stylesheets="@css.css" text="Submit" />
+   <ComboBox fx:id="comboBox" layoutX="304.0" layoutY="85.0" prefWidth="150.0" promptText="----------------------" style="-fx-border-width: 0.5px; -fx-border-color: #ACACAC; -fx-border-radius: 50px; -fx-background-radius: 50px; -fx-padding: 0px;" />
+   <TextField fx:id="enteredvalue" layoutX="465.0" layoutY="86.0" prefHeight="23.0" prefWidth="138.0" style="-fx-background-radius: 10;" />
+   <Button layoutX="615.0" layoutY="86.0" mnemonicParsing="false" onAction="#setTableView" prefHeight="25.0" prefWidth="92.0" style="-fx-background-radius: 10;" styleClass="button-library" stylesheets="@css.css" text="Submit" />
    <AnchorPane layoutX="280.0" layoutY="-1.0" prefHeight="68.0" prefWidth="438.0" style="-fx-background-color: #ADD8E6;" AnchorPane.leftAnchor="290.0" AnchorPane.rightAnchor="80.0">
       <children>
          <Label layoutX="154.0" layoutY="22.0" prefHeight="25.0" prefWidth="102.0" text="Daily Reports" textFill="WHITE" AnchorPane.leftAnchor="154.0">

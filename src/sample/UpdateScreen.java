@@ -36,11 +36,14 @@ public class UpdateScreen implements Initializable  {
     private Label setNameLabel;
 
     private boolean isPriv = true;
+    private boolean checkFi = false;
 
     public UpdateScreen(){
         start = new DatePicker();
         end = new DatePicker();
-
+        licNum = new TextField();
+        licNum.requestFocus();
+        licNum.setFocusTraversable(true);
     }
 
     public void checkFields(MouseEvent mouseEvent) throws IOException {
@@ -84,10 +87,12 @@ public class UpdateScreen implements Initializable  {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        licNum.requestFocus();
         setNameLabel.setText(UserInformation.getName()+" "+UserInformation.getLastname());
         act.setSelected(true);
         priv.setSelected(true);
         location.setDisable(true);
+
     }
 
 
@@ -123,38 +128,51 @@ public class UpdateScreen implements Initializable  {
                     String changeColor = "update viehcle set color = '"+color.getText() +"' where license_no = " + lic;
                     statement.executeUpdate(changeColor);
                     connection.commit();
+                    checkFi = true;
                 }
                 if (!days.getText().isEmpty()) {
                     String changeDay = "update insurance set no_days = '"+days.getText()+"' where payer_id = " + payid;
                     statement.executeUpdate(changeDay);
                     connection.commit();
+                    checkFi = true;
                 }
                 if (!location.getText().isEmpty()) {
                     String changeLocation = "update taxi set locaiton = '"+location.getText()+"' where lic2_no = " + lic;
                     statement.executeUpdate(changeLocation);
                     connection.commit();
+                    checkFi = true;
                 }
 
                 if (start.getValue() != null) {
                     String changeStartDate = "update insurance set start_date = '"+start.getValue()+"' where payer_id = " + payid;
                     statement.executeUpdate(changeStartDate);
                     connection.commit();
+                    checkFi = true;
                 }
                 if (end.getValue() != null) {
                     String changeStartDate = "update insurance set end_date = '"+end.getValue()+"' where payer_id = " + payid;
                     statement.executeUpdate(changeStartDate);
                     connection.commit();
+                    checkFi = true;
                 }
                 if(act.isSelected()){
                     String insurance_type = "update insurance set act_tp = '1' , full_insurance = '0' where payer_id =" +payid;
                     statement.executeUpdate(insurance_type);
                     connection.commit();
+                    checkFi = true;
                 }
                 if (full.isSelected()){
                     String insurance_type = "update insurance set act_tp = '0' , full_insurance = '1' where payer_id =" +payid;
                     statement.executeUpdate(insurance_type);
                     connection.commit();
+                    checkFi = true;
                 }
+
+                if (checkFi)
+                    JOptionPane.showMessageDialog(null, "Update successfully");
+                else
+                    JOptionPane.showMessageDialog(null,"Couldn't update!");
+
 
                 //closing database
                 connection.close();
