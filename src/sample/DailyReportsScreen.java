@@ -48,10 +48,7 @@ public class DailyReportsScreen implements Initializable {
     private String s_d,e_d;
 
     public DailyReportsScreen(){
-        licence_co = new TableColumn<>();
-        owner_co = new TableColumn<>();
-        start_co = new TableColumn<>();
-        end_co = new TableColumn<>();
+
     }
 
     public void checkFields(MouseEvent mouseEvent) throws IOException {
@@ -100,7 +97,7 @@ public class DailyReportsScreen implements Initializable {
         comboBox.getItems().add(2,"Start Date");
         comboBox.getItems().add(3,"End Date");
         setNameLabel.setText(UserInformation.getName()+" "+UserInformation.getLastname());
-        licence_co.setCellValueFactory(new PropertyValueFactory<>("license"));
+        licence_co.setCellValueFactory(new PropertyValueFactory<>("lic"));
         owner_co.setCellValueFactory(new PropertyValueFactory<>("id"));
         start_co .setCellValueFactory(new PropertyValueFactory<>("start"));
         end_co.setCellValueFactory(new PropertyValueFactory<>("end"));
@@ -116,10 +113,13 @@ public class DailyReportsScreen implements Initializable {
             ods.setPassword("123456");
             Connection c = null;
             c = ods.getConnection();
-            ResultSet rs = c.createStatement().executeQuery("select distinct viehcle.LICENSE_NO,viehcle.CUSTOMER_ID,insurance.start_date,insurance.end_date From viehcle,customer,privatee,insurance where viehcle.license_no = privatee.lice_no and viehcle.customer_id = customer.customer_id and privatee.paye_id = insurance.payer_id " +
-                    "union select distinct viehcle.LICENSE_NO,viehcle.CUSTOMER_ID,insurance.start_date,insurance.end_date From viehcle,customer,taxi,insurance where viehcle.license_no = taxi.lic2_no and viehcle.customer_id = customer.customer_id and taxi.pay2_id = insurance.payer_id " +
-                    "union select distinct viehcle.LICENSE_NO,viehcle.CUSTOMER_ID,insurance.start_date,insurance.end_date From viehcle,bank,privatee,insurance where viehcle.license_no = privatee.lice_no and viehcle.customer_id = bank.owner_id and privatee.paye_id = insurance.payer_id " +
-                    "union select distinct viehcle.LICENSE_NO,viehcle.CUSTOMER_ID,insurance.start_date,insurance.end_date From viehcle,bank,taxi,insurance where viehcle.license_no = taxi.lic2_no and viehcle.customer_id = bank.owner_id and taxi.pay2_id = insurance.payer_id ");
+            ResultSet rs = c.createStatement().executeQuery("select  viehcle.LICENSE_NO,viehcle.CUSTOMER_ID,insurance.start_date,insurance.end_date From viehcle,customer,privatee,insurance where viehcle.license_no = privatee.lice_no and viehcle.customer_id = customer.customer_id and privatee.paye_id = insurance.payer_id " +
+                    "union select  viehcle.LICENSE_NO,viehcle.CUSTOMER_ID,insurance.start_date,insurance.end_date From viehcle,customer,taxi,insurance where viehcle.license_no = taxi.lic2_no and viehcle.customer_id = customer.customer_id and taxi.pay2_id = insurance.payer_id " +
+                    "union select  viehcle.LICENSE_NO,viehcle.CUSTOMER_ID,insurance.start_date,insurance.end_date From viehcle,bank,privatee,insurance where viehcle.license_no = privatee.lice_no and viehcle.customer_id = bank.owner_id and privatee.paye_id = insurance.payer_id " +
+                    "union select  viehcle.LICENSE_NO,viehcle.CUSTOMER_ID,insurance.start_date,insurance.end_date From viehcle,bank,taxi,insurance where viehcle.license_no = taxi.lic2_no and viehcle.customer_id = bank.owner_id and taxi.pay2_id = insurance.payer_id ");
+
+            //ResultSet rs = c.createStatement().executeQuery("select viehcle.license_no , viehcle.customer_id , insurance.start_date , insurance.end_date" +
+                   // "from insurance , viehcle , customer where customer.customer_id = viehcle.customer_id and ");
 
             while (rs.next()) {
                 if (comboBox.getSelectionModel().getSelectedIndex() == 0) {
@@ -131,7 +131,8 @@ public class DailyReportsScreen implements Initializable {
                         e_d = rs.getString("end_date");
                         c_i = rs.getInt("CUSTOMER_ID");
                         list.add(new TabelClass(s_d, e_d, l_n, c_i));
-                        break;
+                        System.out.println("ssss");
+                       // break;
                     }
                 } else if (comboBox.getSelectionModel().getSelectedIndex() == 1) {
                     int entered_id = Integer.parseInt(enteredvalue.getText());
@@ -141,7 +142,7 @@ public class DailyReportsScreen implements Initializable {
                         e_d = rs.getString("end_date");
                         c_i = rs.getInt("CUSTOMER_ID");
                         list.add(new TabelClass(s_d, e_d, l_n, c_i));
-                        break;
+                        //break;
                     }
                 } else if (comboBox.getSelectionModel().getSelectedIndex() == 2) {
                     String entered_startDate = (enteredvalue.getText());
@@ -151,20 +152,23 @@ public class DailyReportsScreen implements Initializable {
                         e_d = rs.getString("end_date");
                         c_i = rs.getInt("CUSTOMER_ID");
                         list.add(new TabelClass(s_d, e_d, l_n, c_i));
-                        break;
+                        //break;
+                        System.out.println("start");
                     }
 //                  } else {
 //                      JOptionPane.showMessageDialog(null, "This Start Date doesn't Exist");
 //                  }
                 } else if (comboBox.getSelectionModel().getSelectedIndex() == 3) {
                     String entered_endDate = (enteredvalue.getText());
+                    System.out.println("55555");
                     if (entered_endDate.equals(rs.getString("end_date"))) {
                         l_n = rs.getInt("license_no");
                         s_d = rs.getString("start_date");
                         e_d = rs.getString("end_date");
                         c_i = rs.getInt("CUSTOMER_ID");
                         list.add(new TabelClass(s_d, e_d, l_n, c_i));
-                        break;
+                        //break;
+                        System.out.println("end");
                     }
 //                  } else {
 //                      JOptionPane.showMessageDialog(null, "This End Date doesn't Exist");
@@ -180,6 +184,8 @@ public class DailyReportsScreen implements Initializable {
             ex.printStackTrace();
         }
         tableView.setItems(list);
+        System.out.println("hi");
+        System.out.println(list);
     }
 }
 

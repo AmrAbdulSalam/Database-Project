@@ -59,10 +59,10 @@
     </AnchorPane>
    <TableView fx:id="tableView" layoutX="221.0" layoutY="126.0" prefHeight="373.0" prefWidth="577.0">
      <columns>
-       <TableColumn prefWidth="128.0" text="License Number" />
-         <TableColumn prefWidth="145.0" text="Car Owner" />
-         <TableColumn prefWidth="150.0" text="Start Date " />
-         <TableColumn prefWidth="153.0" text="End Date" />
+       <TableColumn fx:id="licence_co" prefWidth="128.0" text="License Number" />
+         <TableColumn fx:id="owner_co" prefWidth="145.0" text="Car Owner" />
+         <TableColumn fx:id="start_co" prefWidth="150.0" text="Start Date " />
+         <TableColumn fx:id="end_co" prefWidth="153.0" text="End Date" />
      </columns>
    </TableView>
    <ComboBox fx:id="comboBox" layoutX="304.0" layoutY="85.0" prefWidth="150.0" promptText="----------------------" style="-fx-border-width: 0.5px; -fx-border-color: #ACACAC; -fx-border-radius: 50px; -fx-background-radius: 50px; -fx-padding: 0px;" />
