@@ -51,11 +51,16 @@
                     <Label layoutX="-1.0" layoutY="2.0" onMouseClicked="#goToDailyReports" prefHeight="47.0" prefWidth="221.0" text="         Daily reports" />
                 </children>
             </AnchorPane>
-            <AnchorPane layoutX="-1.0" layoutY="265.0" onMouseClicked="#checkFields" prefHeight="46.0" prefWidth="221.0" styleClass="button-change" stylesheets="@css.css">
+            <AnchorPane layoutX="-5.0" layoutY="297.0" onMouseClicked="#checkFields" prefHeight="46.0" prefWidth="221.0" styleClass="button-change" stylesheets="@css.css">
                 <children>
-                    <Label layoutX="1.0" layoutY="-8.0" prefHeight="46.0" prefWidth="221.0" text="          Logout" />
+                    <Label layoutX="7.0" prefHeight="46.0" prefWidth="221.0" text="          Logout" />
                 </children>
             </AnchorPane>
+         <AnchorPane layoutX="1.0" layoutY="251.0" prefHeight="47.0" prefWidth="221.0" styleClass="button-change" stylesheets="@css.css">
+            <children>
+               <Label layoutX="-1.0" layoutY="2.0" onMouseClicked="#goToPrice" prefHeight="47.0" prefWidth="221.0" text="         Price Information" />
+            </children>
+         </AnchorPane>
         </children>
     </AnchorPane>
 

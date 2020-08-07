@@ -255,6 +255,14 @@ public class CustomerScreen implements Initializable {
         personalcar.setSelected(true);
 
     }
+
+    public void goToPrice(MouseEvent mouseEvent) throws IOException {
+        Parent root = FXMLLoader.load(getClass().getResource("Price.fxml"));
+        Scene tablescene = new Scene(root);
+        Stage window = (Stage)((Node) mouseEvent.getSource()).getScene().getWindow();
+        window.setScene(tablescene);
+        window.show();
+    }
 }
 
 
