@@ -51,15 +51,20 @@
                     <Label layoutX="-1.0" layoutY="2.0" onMouseClicked="#goToDailyReports" prefHeight="47.0" prefWidth="221.0" text="         Daily reports" />
                 </children>
             </AnchorPane>
-            <AnchorPane layoutX="-1.0" layoutY="265.0" onMouseClicked="#checkFields" prefHeight="46.0" prefWidth="221.0" styleClass="button-change" stylesheets="@css.css">
+            <AnchorPane layoutX="-5.0" layoutY="297.0" onMouseClicked="#checkFields" prefHeight="46.0" prefWidth="221.0" styleClass="button-change" stylesheets="@css.css">
                 <children>
-                    <Label layoutX="1.0" layoutY="-8.0" prefHeight="46.0" prefWidth="221.0" text="          Logout" />
+                    <Label layoutX="7.0" prefHeight="46.0" prefWidth="221.0" text="          Logout" />
+                </children>
+            </AnchorPane>
+            <AnchorPane layoutX="1.0" layoutY="251.0" prefHeight="47.0" prefWidth="221.0" styleClass="button-change" stylesheets="@css.css">
+                <children>
+                    <Label layoutX="-1.0" layoutY="2.0" onMouseClicked="#goToPrice" prefHeight="47.0" prefWidth="221.0" text="         Price Information" />
                 </children>
             </AnchorPane>
         </children>
     </AnchorPane>
 
-                <AnchorPane fx:id="personalpanel" layoutX="222.0" layoutY="-8.0" prefHeight="253.0" prefWidth="608.0" style="-fx-background-color: #cfcaca;">
+    <AnchorPane fx:id="personalpanel" layoutX="222.0" layoutY="-8.0" prefHeight="253.0" prefWidth="608.0" style="-fx-background-color: #cfcaca;">
         <children>
             <Label layoutX="27.0" layoutY="66.0" prefHeight="26.0" prefWidth="97.0" text="Full Name" />
             <Label layoutX="27.0" layoutY="103.0" prefHeight="26.0" prefWidth="66.0" text="Address" />
@@ -77,15 +82,15 @@
                 <buttons>
                     <Group />
                     <RadioButton fx:id="personalcar" mnemonicParsing="false" onAction="#personalButton" prefHeight="21.0" prefWidth="243.0" selected="true" text="Personal Car">
-                  <toggleGroup>
+                        <toggleGroup>
                             <ToggleGroup fx:id="owner" />
-                  </toggleGroup>
-               </RadioButton>
+                        </toggleGroup>
+                    </RadioButton>
                     <RadioButton fx:id="bankid" mnemonicParsing="false" onAction="#BankButton" text="By The Bank" toggleGroup="$owner" />
                 </buttons>
             </ButtonBar>
         </children>
-   </AnchorPane>
+    </AnchorPane>
     <AnchorPane fx:id="bankpanel" layoutX="223.0" layoutY="244.0" prefHeight="253.0" prefWidth="608.0">
         <children>
             <TextField fx:id="bankname" disable="true" layoutX="152.0" layoutY="23.0" prefHeight="31.0" prefWidth="225.0" promptText="                    Bank_name" style="-fx-background-radius: 10;" />
@@ -100,8 +105,8 @@
             <TextField fx:id="bank_mid" disable="true" layoutX="226.0" layoutY="108.0" prefHeight="31.0" prefWidth="117.0" promptText="Mid_name" style="-fx-background-radius: 10;" />
             <TextField fx:id="bank_last" disable="true" layoutX="343.0" layoutY="108.0" prefHeight="31.0" prefWidth="117.0" promptText="Last_name" style="-fx-background-radius: 10;" />
             <TextField fx:id="bank_id" disable="true" layoutX="152.0" layoutY="150.0" prefHeight="31.0" prefWidth="225.0" promptText="                    Ex : 405376189" style="-fx-background-radius: 10;" />
-         <Button layoutX="521.0" layoutY="207.0" mnemonicParsing="false" onAction="#nextScreen" prefHeight="25.0" prefWidth="66.0" style="-fx-background-radius: 20;" styleClass="button-library" stylesheets="@css.css" text="Next" />
-         <Button layoutX="440.0" layoutY="207.0" mnemonicParsing="false" onAction="#clearFields" prefHeight="25.0" prefWidth="66.0" style="-fx-background-radius: 20;" styleClass="button-library" stylesheets="@css.css" text="Clear" />
+            <Button layoutX="521.0" layoutY="207.0" mnemonicParsing="false" onAction="#nextScreen" prefHeight="25.0" prefWidth="66.0" style="-fx-background-radius: 20;" styleClass="button-library" stylesheets="@css.css" text="Next" />
+            <Button layoutX="440.0" layoutY="207.0" mnemonicParsing="false" onAction="#clearFields" prefHeight="25.0" prefWidth="66.0" style="-fx-background-radius: 20;" styleClass="button-library" stylesheets="@css.css" text="Clear" />
         </children>
     </AnchorPane>
 </AnchorPane>

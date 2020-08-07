@@ -153,8 +153,8 @@ public class CustomerScreen implements Initializable {
         if (personalcar.isSelected()){
             //Pesonal information are ready for database
             if (personname.getText().isEmpty() || midname_personal.getText().isEmpty() ||lastname_personal.getText().isEmpty()
-            ||city_personal.getText().isEmpty() || street_personal.getText().isEmpty()||
-            id_perosnal.getText().isEmpty() || phone_personal.getText().isEmpty()){
+                    ||city_personal.getText().isEmpty() || street_personal.getText().isEmpty()||
+                    id_perosnal.getText().isEmpty() || phone_personal.getText().isEmpty()){
                 JOptionPane.showMessageDialog(null , "Texts should not be EMPTY!!");
             }
             else{
@@ -188,14 +188,15 @@ public class CustomerScreen implements Initializable {
                         window.show();
                     }
                 }catch (Exception e){
-                    JOptionPane.showMessageDialog(null , "Invalid inputs");
+                  JOptionPane.showMessageDialog(null , "Invalid inputs");
+                    e.printStackTrace();
                 }
             }
         }//end of persnal car selected
         else if(bankid.isSelected()){
 
             if(bankname.getText().isEmpty() || bank_street.getText().isEmpty() || bank_city.getText().isEmpty() ||
-            bank_first.getText().isEmpty() || bank_mid.getText().isEmpty() || bank_last.getText().isEmpty() || bank_id.getText().isEmpty()){
+                    bank_first.getText().isEmpty() || bank_mid.getText().isEmpty() || bank_last.getText().isEmpty() || bank_id.getText().isEmpty()){
                 JOptionPane.showMessageDialog(null , "Texts cannot be Empty");
             }
             else {
@@ -232,7 +233,7 @@ public class CustomerScreen implements Initializable {
                 catch (Exception e){
                     JOptionPane.showMessageDialog(null ,"Invalid inputs!");
                 }
-                }// end of else
+            }// end of else
         }
 
 
@@ -255,10 +256,12 @@ public class CustomerScreen implements Initializable {
         personalcar.setSelected(true);
 
     }
+
+    public void goToPrice(MouseEvent mouseEvent) throws IOException {
+        Parent root = FXMLLoader.load(getClass().getResource("Price.fxml"));
+        Scene tablescene = new Scene(root);
+        Stage window = (Stage)((Node) mouseEvent.getSource()).getScene().getWindow();
+        window.setScene(tablescene);
+        window.show();
+    }
 }
-
-
-
-
-
-

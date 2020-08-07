@@ -32,6 +32,7 @@ public class CustomerNextScreen implements Initializable {
 
     @FXML
     private TextField t_model , t_price , t_name, t_phone, t_location, t_no ;
+    public static String private_or_taxi;
 
     public CustomerNextScreen (){
         p_model = new TextField();
@@ -55,6 +56,7 @@ public class CustomerNextScreen implements Initializable {
 
             //check the radio button :
             if (privatebtn.isSelected()){
+                private_or_taxi="private";
                 if (p_model.getText().isEmpty() || p_price.getText().isEmpty() || engine_power.getText().isEmpty()){
                     JOptionPane.showMessageDialog(null , "Text cannot be Empty!");
                 }
@@ -102,8 +104,9 @@ public class CustomerNextScreen implements Initializable {
                 }
             }
             else if(taxibtn.isSelected()){
+                private_or_taxi="taxi";
                 if (t_model.getText().isEmpty() || t_price.getText().isEmpty() || t_no.getText().isEmpty() || t_phone.getText().isEmpty() ||
-                t_location.getText().isEmpty() || t_name.getText().isEmpty()){
+                        t_location.getText().isEmpty() || t_name.getText().isEmpty()){
                     JOptionPane.showMessageDialog(null , "Text cannot be Empty");
                 }
                 else if (Character.isLetter(Integer.parseInt(t_phone.getText()))){

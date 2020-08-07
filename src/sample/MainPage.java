@@ -72,4 +72,13 @@ public class MainPage implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         setNameLabel.setText(UserInformation.getName()+" "+UserInformation.getLastname());
     }
+    public void report (MouseEvent mouseEvent) {
+
+        printreport viewreport=new printreport();
+        try {
+            viewreport.showReport();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 }
